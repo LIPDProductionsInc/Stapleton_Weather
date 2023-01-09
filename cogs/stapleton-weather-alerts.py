@@ -11,7 +11,7 @@ class WeatherAlertsCog(commands.Cog, name="Weather Alert Commands"):
         self.bot = bot
 
     @commands.hybrid_command(name="issue", description="Issue a weather alert for the county")
-    @commands.check_any(commands.is_owner, commands.has_any_role(997257519347024002, 997257499340177578, 997256700232994938, 997256680616251563))
+    @commands.check_any(commands.is_owner(), commands.has_any_role(997257519347024002, 997257499340177578, 997256700232994938, 997256680616251563))
     @app_commands.describe(alert_type="The type of alert to issue", message="The message to send")
     async def issue(self, ctx, alert_type:Literal["Advisory", "Watch", "Warning"], message:str):
         channel = ctx.bot.get_channel(997711440867758170)
