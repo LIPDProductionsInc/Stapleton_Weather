@@ -9,16 +9,16 @@ from discord import app_commands
 class LeaveofAbsenceModal(discord.ui.Modal, title="Leave of Absence Form"):
 
     startdate = discord.ui.TextInput(
-        label="What is the start date of your leave of absence?",
+        label="What is the start of your leave of absence?",
         style=discord.TextStyle.short,
         placeholder="Enter the start date here...",
         required=True
     )
 
     enddate = discord.ui.TextInput(
-        label="What is the estimated end date of your leave of absence?",
+        label="What is the end of your leave of absence?",
         style=discord.TextStyle.short,
-        placeholder="Enter the end date here...",
+        placeholder="Enter the estimated end date here...",
         required=True
     )
 
@@ -48,7 +48,7 @@ class LeaveofAbsenceModal(discord.ui.Modal, title="Leave of Absence Form"):
         embed.set_author(name=interaction.user.name, icon_url=interaction.user.avatar)
         embed.set_footer(text=f"ID: {interaction.user.id}")
         embed.timestamp = datetime.datetime.now()
-        await channel.send(embed=embed)
+        await channel.send("<@997717072001900624>", embed=embed)
         await interaction.response.send_message(f"Your leave of absence has been submitted. You will be notified when it has been approved or denied.", ephemeral=True)
         pass
 
@@ -67,20 +67,20 @@ class EmployeeCog(commands.Cog, name="Employee Commands"):
     group = app_commands.Group(name="loa", description="Leave of Absence Commands")
 
     @group.command(name="submit", description="Request a Leave of Absence")
-    @app_commands.has_role(997272837205282917)
+    @app_commands.checks.has_role(997272837205282917)
     async def submit(self, interaction: discord.Interaction):
         await interaction.response.send_modal(LeaveofAbsenceModal())
         pass
 
     @group.command(name="approve", description="Approve a Leave of Absence")
-    @app_commands.has_role(997717072001900624)
+    @app_commands.checks.has_role(997717072001900624)
     async def approve(self, interaction: discord.Interaction, member: discord.Member):
         await member.send(f"Hello {member.display_name},\n\nYour leave of absence has been approved. Please contact a member of command if you have any questions.\n\n*I am a bot contacting you on behalf of {interaction.user.mention}. Any responses sent here will not be delivered.*")
         await interaction.response.send_message(f"Leave of absence for {member.mention} has been approved.", ephemeral=True)
         pass
 
     @group.command(name="deny", description="Deny a Leave of Absence")
-    @app_commands.has_role(997717072001900624)
+    @app_commands.checks.has_role(997717072001900624)
     async def deny(self, interaction: discord.Interaction, member: discord.Member, reason: str):
         await member.send(f"Hello {member.display_name},\n\nYour leave of absence has been denied for the following reason:\n\n{reason}\n\nPlease contact a member of command if you have any questions.\n\n*I am a bot contacting you on behalf of {interaction.user.mention}. Any responses sent here will not be delivered.*")
         await interaction.response.send_message(f"Leave of absence for {member.mention} has been denied.", ephemeral=True)
