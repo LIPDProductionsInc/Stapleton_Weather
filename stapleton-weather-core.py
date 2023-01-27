@@ -27,6 +27,7 @@ tree = bot.tree
 initial_extensions = [#'cogs.stapleton-weather-admin',
                       'cogs.stapleton-weather-alert',
                       'cogs.stapleton-weather-commands',
+                      'cogs.stapleton-weather-employees',
                       'cogs.stapleton-weather-errors',
                       'cogs.stapleton-weather-events',
                       'cogs.stapleton-weather-help',
