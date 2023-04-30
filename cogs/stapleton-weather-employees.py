@@ -37,7 +37,7 @@ class LeaveofAbsenceModal(discord.ui.Modal, title="Leave of Absence Form"):
     )
 
     async def on_submit(self, interaction: discord.Interaction):
-        channel = self.bot.get_channel(1067586821116153886)
+        channel = interaction.client.get_channel(1067586821116153886)
         embed = discord.Embed(
             title="Leave of Absence Request",
             colour=discord.Color.dark_blue()
@@ -45,10 +45,10 @@ class LeaveofAbsenceModal(discord.ui.Modal, title="Leave of Absence Form"):
         embed.add_field(name="Start Date", value=self.startdate.value, inline=True)
         embed.add_field(name="Estimated End Date", value=self.enddate.value, inline=True)
         embed.add_field(name="Reason", value=self.reason.value, inline=False)
-        embed.set_author(name=interaction.user.name, icon_url=interaction.user.avatar)
+        embed.set_author(name=interaction.user.display_name, icon_url=interaction.user.display_avatar)
         embed.set_footer(text=f"ID: {interaction.user.id}")
         embed.timestamp = datetime.datetime.now()
-        await channel.send("<@997717072001900624>", embed=embed)
+        await channel.send("<@&997717072001900624>", embed=embed)
         await interaction.response.send_message(f"Your leave of absence has been submitted. You will be notified when it has been approved or denied.", ephemeral=True)
         pass
 
