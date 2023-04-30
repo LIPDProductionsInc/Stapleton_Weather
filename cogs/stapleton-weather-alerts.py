@@ -23,7 +23,7 @@ class WeatherAlertsCog(commands.Cog, name="Weather Alert Commands"):
                 description=message
             )
             embed.set_footer(text=f"Stapleton County Weather Service | Issued by {ctx.author.name}", icon_url=ctx.author.avatar)
-            embed.timestamp = datetime.datetime.utcnow()
+            embed.timestamp = datetime.datetime.now()
             logembed = discord.Embed(
                 colour=discord.Color.dark_orange(),
                 description=f"**Issued by:** {ctx.author.mention}"
@@ -40,7 +40,7 @@ class WeatherAlertsCog(commands.Cog, name="Weather Alert Commands"):
                 description=message
             )
             embed.set_footer(text=f"Stapleton County Weather Service | Issued by {ctx.author.name}", icon_url=ctx.author.avatar)
-            embed.timestamp = datetime.datetime.utcnow()
+            embed.timestamp = datetime.datetime.now()
             logembed = discord.Embed(
                 colour=discord.Color.dark_orange(),
                 description=f"**Issued by:** {ctx.author.mention}"
@@ -57,7 +57,7 @@ class WeatherAlertsCog(commands.Cog, name="Weather Alert Commands"):
                 description=message
             )
             embed.set_footer(text=f"Stapleton County Weather Service | Issued by {ctx.author.name}", icon_url=ctx.author.avatar)
-            embed.timestamp = datetime.datetime.utcnow()
+            embed.timestamp = datetime.datetime.now()
             logembed = discord.Embed(
                 colour=discord.Color.dark_orange(),
                 description=f"**Issued by:** {ctx.author.mention}"
